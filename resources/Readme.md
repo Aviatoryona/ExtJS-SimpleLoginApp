@@ -1,4 +1,4 @@
-# MyApp/resources
+# LoginApp/resources
 
 This folder contains resources (such as images) needed by the application. 
 

@@ -3,16 +3,36 @@
  * calls Ext.application(). This is the ideal place to handle application launch and
  * initialization details.
  */
-Ext.define('MyApp.Application', {
+Ext.define('LoginApp.Application', {
     extend: 'Ext.app.Application',
 
-    name: 'MyApp',
+    name: 'LoginApp',
+
+    stores: [],
+
+    views: [
+        'LoginApp.view.login.Login',
+        'LoginApp.view.main.Main'
+    ],
 
     quickTips: false,
     platformConfig: {
         desktop: {
             quickTips: true
         }
+    },
+
+    launch: function () {
+        var loogedIn;
+
+        loogedIn = localStorage.getItem('LoggedIn');
+
+        Ext.widget(loogedIn ? 'app-main' : 'loginwin');
+
+        // Ext.widget('login');
+        // Ext.create({
+        //     xtype:'loginwin'
+        // });
     },
 
     onAppUpdate: function () {

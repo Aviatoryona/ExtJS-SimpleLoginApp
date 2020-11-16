@@ -1,4 +1,4 @@
-# MyApp
+# LoginApp
 
 This folder is primarily a container for the top-level pieces of the application.
 While you can remove some files and folders that this application does not use,
@@ -83,7 +83,7 @@ The contents of "overrides" folders are automatically required and included in
 builds. These should not be explicitly mentioned in "requires" or "uses" in code.
 This area is intended for overrides like these:
 
-    Ext.define('MyApp.overrides.foo.Bar', {
+    Ext.define('LoginApp.overrides.foo.Bar', {
         override: 'Ext.foo.Bar',
         ...
     });
@@ -91,4 +91,33 @@ This area is intended for overrides like these:
 Such overrides, while automatically required, will only be included if their target
 class ("Ext.foo.Bar" in this case) is also required. This simplifies applying
 patches or extensions to other classes.
+
+## Universal Applications
+
+In a Universal Application, the basic application structure above is retained but
+only holds code, resources, etc. pieces that are used in both classic and modern
+build profiles. The following additional directories are used to isolate code and
+other files that are toolkit-specific:
+
+    classic/                # Content specific to the classic toolkit
+        src/
+            model/          # Data model classes
+            view/           # Views as well as ViewModels and ViewControllers
+            store/          # Data stores
+            controller/     # Global / application-level controllers
+
+        overrides/          # JavaScript code that is automatically required
+
+        resources/          # Assets such as images, fonts, etc.
+
+    modern/                 # Content specific to the modern toolkit
+        src/
+            model/          # Data model classes
+            view/           # Views as well as ViewModels and ViewControllers
+            store/          # Data stores
+            controller/     # Global / application-level controllers
+
+        overrides/          # JavaScript code that is automatically required
+
+        resources/          # Assets such as images, fonts, etc.
 
